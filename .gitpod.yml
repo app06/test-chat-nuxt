@@ -1,0 +1,9 @@
+ports:
+  - port: 3000
+    onOpen: open-browser
+  - port: 3005
+    onOpen: ignore
+
+tasks:
+  - command: npm install -y && npm run fake
+  - command: gp await-port 3005 && export API_LOCATION=$(gp url 3005) && npm run dev
